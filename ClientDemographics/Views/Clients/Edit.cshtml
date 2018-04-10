@@ -1,0 +1,100 @@
+﻿@model ClientDemographics.ViewModels.EditClientViewModel
+
+@{
+    /**/
+
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <table width="95%">
+        <tr>
+            <td>@Html.LabelFor(model => model.ClientFirstName, htmlAttributes: new { @class = "control-label col-mid-2" })</td>
+            <td>@Html.EditorFor(model => model.ClientFirstName, new { htmlAttributes = new { @class = "form-control" } })</td>
+            <td>@Html.LabelFor(model => model.ClientMiddleInitial, htmlAttributes: new { @class = "control-label col-mid-2" })</td>
+            <td>@Html.EditorFor(model => model.ClientMiddleInitial, new { htmlAttributes = new { @class = "form-control" } })</td>
+            <td>@Html.LabelFor(model => model.ClientLastName, htmlAttributes: new { @class = "control-label col-mid-2" })</td>
+            <td>@Html.EditorFor(model => model.ClientLastName, new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Genders, htmlAttributes: new { @class = "control-label col-mid-2" })</td>
+            <td>@Html.DropDownListFor(model => model.GenderId, new SelectList(Model.Genders, "GenderId", "GenderName"), "", new { htmlAttributes = new { @class = "form-control" } })</td>
+            <td>@Html.LabelFor(model => model.DateofBirth, htmlAttributes: new { @class = "control-label col-mid-2" })</td>
+            <td>@Html.EditorFor(model => model.DateofBirth, new { htmlAttributes = new { @class = "form-control" } })</td>
+            <td>@Html.LabelFor(model => model.Ethnicities, htmlAttributes: new { @class = "control-label col-mid-2" })</td>
+            <td>@Html.DropDownListFor(model => model.EthnicityId, new SelectList(Model.Ethnicities, "EthnicityId", "EthnicityName"), "", new { @class = "form-control" }) </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.ClientNumber, htmlAttributes: new { @class = "control-label col-mid-2" })</td>
+            <td>@Html.EditorFor(model => model.ClientNumber, new { htmlAttributes = new { @class = "form-control" } })</td>
+            <td>@Html.LabelFor(model => model.TypeName, htmlAttributes: new { @class = "control-label col-mid-2" })</td>
+            <td>@Html.DropDownListFor(model => model.TypeId, new SelectList(Model.Types, "TypeId", "TypeName"), "", new { htmlAttributes = new { @class = "form-control" } })</td>
+            <td>@Html.LabelFor(model => model.Statuses, htmlAttributes: new { @class = "control-label col-mid-2" })</td>
+            <td>@Html.DropDownListFor(model => model.StatusId, new SelectList(Model.Statuses, "StatusId", "StatusName"), "", new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.DateofFirstContact, htmlAttributes: new { @class = "control-label col-mid-2" })</td>
+            <td>@Html.EditorFor(model => model.DateofFirstContact, new { htmlAttributes = new { @class = "form-control" } })</td>
+            <td>@Html.LabelFor(model => model.CountyOfIncident, htmlAttributes: new { @class = "control-label col-mid-2" })</td>
+            <td>@Html.DropDownListFor(model => model.CountyOfIncidentId, new SelectList(Model.CountyOfIncident, "CountyId", "CountyName"), "", new { htmlAttributes = new { @class = "form-control" } })</td>
+            <td> &nbsp;</td>
+            <td> &nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="6">Type of Abuse:</td>
+        </tr>
+        <tr>
+            <td colspan="6"><ul class="checkbox-items">@Html.EditorFor(model => model.AbuseTypes)</ul></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Address1, htmlAttributes: new { @class = "control-label col-mid-2" })</td>
+            <td colspan="2">@Html.EditorFor(model => model.Address1, new { htmlAttributes = new { @class = "form-control" } })</td>
+            <td>@Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-mid-2" })</td>
+            <td colspan="2">@Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })</td>
+
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td colspan="2">@Html.EditorFor(model => model.Address2, new { htmlAttributes = new { @class = "form-control" } })</td>
+            <td>@Html.LabelFor(model => model.States, htmlAttributes: new { @class = "control-label col-mid-2" })</td>
+            <td colspan="2">@Html.DropDownListFor(model => model.StateId, new SelectList(Model.States, "StateId", "StateName"), "", new { @class = "form-control" })</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-mid-2" })</td>
+            <td colspan="2">@Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })</td>
+            <td>@Html.LabelFor(model => model.CountyOfResidence, htmlAttributes: new { @class = "control-label col-mid-2" })</td>
+            <td colspan="2">@Html.DropDownListFor(model => model.CountyOfResidenceId, new SelectList(Model.CountyOfResidence, "CountyId", "CountyName"), "", new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td colspan="6">Demographics</td>
+        </tr>
+        <tr>
+            <td colspan="6"><ul class="checkbox-items">@Html.EditorFor(model => model.Demographics)</ul></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.EmergencyContactName, htmlAttributes: new { @class = "control-label col-mid-2" })</td>
+            <td colspan="2">@Html.EditorFor(model => model.EmergencyContactName, new { htmlAttributes = new { @class = "form-control" } })</td>
+            <td>@Html.LabelFor(model => model.EmergencyContactPhone, htmlAttributes: new { @class = "control-label col-mid-2" })</td>
+            <td colspan="2">@Html.EditorFor(model => model.EmergencyContactPhone, new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Save" class="btn btn-default" /></td>
+            <td>@Html.HiddenFor(model => model.ID)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+

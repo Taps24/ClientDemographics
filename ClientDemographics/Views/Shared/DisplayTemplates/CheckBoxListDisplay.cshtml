@@ -1,0 +1,9 @@
+﻿
+@model ClientDemographics.Models.CheckBoxListItem
+
+
+@Html.HiddenFor(model => model.ID)
+@Html.CheckBoxFor(model => model.IsChecked)
+@Html.LabelFor(model => model.IsChecked, Model.Display)
+
+<br />

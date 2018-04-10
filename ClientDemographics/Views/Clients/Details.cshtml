@@ -1,0 +1,209 @@
+﻿@model ClientDemographics.ViewModels.EditClientViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.ClientLastName, @Model.ClientFirstName  @Model.ClientMiddleInitial Details</h2>
+
+
+<table>
+    <tr>
+        <td>
+            <strong>Gender</strong>
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.GenderName)
+        </td>
+        <td>
+            <strong>Date of Birth</strong>
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.DateofBirth)
+        </td>
+        <td>
+            <strong>Ethnicity</strong>
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.EthnicityName)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Client Number</strong>
+        </td>
+
+        @if (Model.ClientNumber != null)
+        {
+            <td>
+                @Html.DisplayFor(model => model.ClientNumber)
+            </td>
+        }
+        else
+        {
+            <td>
+                &nbsp;
+            </td>
+        }
+
+
+        <td>
+            <strong>Type</strong>
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.TypeName)
+        </td>
+        <td>
+            <strong>Status</strong>
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.StatusName)
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <strong>Date of First Content</strong>
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.DateofFirstContact)
+        </td>
+        <td>
+            <strong>County of Incident</strong>
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.TypeName)
+        </td>
+        <td>
+            &nbsp;
+        </td>
+        <td>
+            &nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="6">
+            <strong>Type of Abuse</strong>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="6">
+            <ul class="checkbox-items">
+                @foreach (var type in Model.AbuseTypes)
+                {
+                    <li>@type.Display</li>
+                }
+            </ul>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <strong>Address</strong>
+        </td>
+        <td colspan="2">
+            @Html.DisplayFor(model => model.Address1)
+        </td>
+        <td>
+            <strong>City</strong>
+        </td>
+        <td colspan="2">
+            @Html.DisplayFor(model => model.City)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Address</strong>
+        </td>
+        @if (Model.Address2 != null)
+        {
+            <td colspan="2">
+                @Html.DisplayFor(model => model.Address2)
+            </td>
+        }
+        else
+        {
+            <td colspan="2">
+                &nbsp;
+            </td>
+        }
+
+        <td>
+            <strong>State</strong>
+        </td>
+        <td colspan="2">
+            @Html.DisplayFor(model => model.StateName)
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <strong>Phone</strong>
+        </td>
+        <td colspan="2">
+            @Html.DisplayFor(model => model.Phone)
+        </td>
+        <td>
+            <strong>County of Residence</strong>
+        </td>
+        <td colspan="2">
+            @Html.DisplayFor(model => model.CountyOfResidence)
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="6">
+            <strong>Demographics</strong>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="6">
+            <ul class="checkbox-items">
+                @foreach (var item in Model.Demographics)
+                {
+                    <li>@item.Display</li>
+                }
+            </ul>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <strong>Emergency Contact Name</strong>
+        </td>
+        <td colspan="2">
+            @Html.DisplayFor(model => model.EmergencyContactName)
+        </td>
+        <td>
+            <strong>Emergency Contact Phone</strong>
+        </td>
+        <td colspan="2">
+            @Html.DisplayFor(model => model.EmergencyContactPhone)
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.ActionLink("Back to List", "Index") |
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = Model.ID })
+        </td>
+        <td>@Html.HiddenFor(model => model.ID)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            
+        </td>
+    </tr>
+
+
+
+
+</table>
+
+
+

@@ -1,0 +1,50 @@
+﻿@model ClientDemographics.ViewModels.ClientIndexViewModel
+@{
+    ViewBag.Title = "Clients";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            Last name
+        </th>
+        <th>
+            First Name
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            &nbsp;
+        </th>
+    </tr>
+    @foreach (var item in Model.Clients)
+    {
+    <tr>
+        <td>
+            @item.ClientLastName
+        </td>
+
+        <td>
+            @item.ClientFirstName
+        </td>
+
+        <td>
+            @item.Status.StatusName
+        </td>
+
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+    }
+</table>
